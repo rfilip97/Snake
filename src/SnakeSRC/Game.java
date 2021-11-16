@@ -17,8 +17,9 @@ import java.util.concurrent.TimeUnit;
 public class Game extends JFrame {
 
 	private static final long serialVersionUID = 1L;
-	
-	private static int FRAME_SPEED = 500;	// one frame is drawn each 'FRAME_SPEED' ms
+
+	private static int FRAME_SPEED = 500; // one frame is drawn each 'FRAME_SPEED' ms
+	boolean snakeShouldMove = true; // set this to false to stop the snake from moving, used for debugging
 	int x = 2;
 	int y = 2;
 	Direction direction = Direction.RIGHT;
@@ -43,19 +44,21 @@ public class Game extends JFrame {
 		// Main Loop
 		while (true) {
 			try {
-				switch (direction) {
-				case UP:
-					y--;
-					break;
-				case DOWN:
-					y++;
-					break;
-				case LEFT:
-					x--;
-					break;
-				case RIGHT:
-					x++;
-					break;
+				if (snakeShouldMove) {
+					switch (direction) {
+					case UP:
+						y--;
+						break;
+					case DOWN:
+						y++;
+						break;
+					case LEFT:
+						x--;
+						break;
+					case RIGHT:
+						x++;
+						break;
+					}
 				}
 
 				repaint();
@@ -93,7 +96,6 @@ public class Game extends JFrame {
 			graphics.setColor(Color.GREEN);
 			graphics.setStroke(new BasicStroke(UNIT));
 			graphics.drawLine(x * UNIT, y * UNIT, (x + 1) * UNIT, y * UNIT);
-
 		}
 	}
 
