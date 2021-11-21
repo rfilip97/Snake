@@ -2,6 +2,7 @@ package SnakeSRC;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Random;
 
 public class FreeSquaresTracker {
 	private ArrayList<Integer> array;
@@ -38,4 +39,18 @@ public class FreeSquaresTracker {
 		}
 	}
 
+	public Point popRandomFreeSquare() {
+		// Generate random index
+		Random rand = new Random();
+		int random_index = rand.nextInt(array.size() - 1);
+
+		// Pick the element at the random index
+		Point element = Point.numberToPoint(array.get(random_index));
+
+		// Remove the element at the random index
+		array.remove(random_index);
+
+		System.out.println("Popping elem: " + element);
+		return element;
+	}
 }

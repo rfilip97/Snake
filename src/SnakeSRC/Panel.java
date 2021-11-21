@@ -15,9 +15,11 @@ public class Panel extends JPanel implements ActionListener {
 	private static final long serialVersionUID = 1L;
 
 	Snake snake;
+	Point food;
 
-	Panel(Snake snake) {
+	Panel(Snake snake, Point food) {
 		this.snake = snake;
+		this.food = food;
 		this.setPreferredSize(new Dimension(GameConfig.WIDTH, GameConfig.HEIGHT));
 		this.setBackground(Color.black);
 		this.setFocusable(true);
@@ -36,6 +38,8 @@ public class Panel extends JPanel implements ActionListener {
 			Point part = snake.getPart(i);
 			drawPart(g, part.getX(), part.getY());
 		}
+
+		drawFood(g);
 	}
 
 	public void drawPart(Graphics g, int x, int y) {
@@ -43,5 +47,14 @@ public class Panel extends JPanel implements ActionListener {
 		graphics.setColor(Color.GREEN);
 		graphics.setStroke(new BasicStroke(GameConfig.UNIT));
 		graphics.drawLine(x * GameConfig.UNIT, y * GameConfig.UNIT, x * GameConfig.UNIT, y * GameConfig.UNIT);
+	}
+
+	public void drawFood(Graphics g) {
+		Graphics2D graphics = (Graphics2D) g;
+		graphics.setColor(Color.RED);
+		graphics.setStroke(new BasicStroke(GameConfig.UNIT));
+		graphics.drawLine(food.getX() * GameConfig.UNIT, food.getY() * GameConfig.UNIT, food.getX() * GameConfig.UNIT,
+				food.getY() * GameConfig.UNIT);
+
 	}
 }

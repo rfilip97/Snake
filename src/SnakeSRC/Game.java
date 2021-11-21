@@ -15,15 +15,20 @@ public class Game extends JFrame {
 	int x = 2;
 	int y = 2;
 	Direction direction = Direction.RIGHT;
+	FreeSquaresTracker freeSqTracker;
+	Point food;
+	Point spawn;
 	Panel panel;
 	Snake snake;
-	Point spawn;
 
 	// Game
 	Game() {
 		spawn = new Point(10, 10); // Spawning point
 		snake = new Snake(spawn);
-		panel = new Panel(snake);
+		freeSqTracker = new FreeSquaresTracker();
+		freeSqTracker.removeElement(spawn);
+		food = freeSqTracker.popRandomFreeSquare();
+		panel = new Panel(snake, food);
 		this.add(panel);
 		this.setTitle("Snek");
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -52,6 +57,11 @@ public class Game extends JFrame {
 				e.printStackTrace();
 			}
 		}
+	}
+
+	private void generateFood() {
+		Point foodPosition = freeSqTracker.popRandomFreeSquare();
+
 	}
 
 	// KeyListener
