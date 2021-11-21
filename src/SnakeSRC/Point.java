@@ -42,4 +42,23 @@ public class Point {
 		int y = nr / GameConfig.NR_OF_UNITS_IN_LINE;
 		return new Point(x, y);
 	}
+
+	@Override
+	public boolean equals(Object o) {
+		// If the object is compared with itself then return true
+		if (o == this) {
+			return true;
+		}
+
+		// If not compared to a Point, return false
+		if (!(o instanceof Point)) {
+			return false;
+		}
+
+		// Typecast o to Point so that we can compare data members
+		Point point = (Point) o;
+
+		// Compare the data members and return accordingly
+		return Double.compare(x, point.x) == 0 && Double.compare(y, point.y) == 0;
+	}
 }
