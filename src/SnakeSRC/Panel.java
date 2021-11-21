@@ -57,4 +57,12 @@ public class Panel extends JPanel implements ActionListener {
 				food.getY() * GameConfig.UNIT);
 
 	}
+
+	public void updateSnake(Snake snake) {
+		this.snake = snake;
+	}
+
+	public void updateFood(Point food) {
+		this.food = food;
+	}
 }
