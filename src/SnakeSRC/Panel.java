@@ -19,7 +19,10 @@ public class Panel extends JPanel implements ActionListener {
 	static final int UNIT = HEIGHT / 100;
 	static final int NR_OF_UNITS_IN_LINE = HEIGHT / UNIT;
 
-	Panel() {
+	Snake snake;
+
+	Panel(Snake snake) {
+		this.snake = snake;
 		this.setPreferredSize(new Dimension(WIDTH, HEIGHT));
 		this.setBackground(Color.black);
 		this.setFocusable(true);
@@ -32,7 +35,12 @@ public class Panel extends JPanel implements ActionListener {
 	@Override
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		drawPart(g, 2, 2);
+
+		// Draw each part of the snake
+		for (int i = 0; i < snake.getSize(); i++) {
+			Point part = snake.getPart(i);
+			drawPart(g, part.getX(), part.getY());
+		}
 	}
 
 	public void drawPart(Graphics g, int x, int y) {

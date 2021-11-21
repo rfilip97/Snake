@@ -1,18 +1,10 @@
 package SnakeSRC;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-
-import java.awt.BasicStroke;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
 import java.util.concurrent.TimeUnit;
+
+import javax.swing.JFrame;
 
 public class Game extends JFrame {
 
@@ -24,10 +16,14 @@ public class Game extends JFrame {
 	int y = 2;
 	Direction direction = Direction.RIGHT;
 	Panel panel;
+	Snake snake;
+	Point spawn;
 
 	// Game
 	Game() {
-		panel = new Panel();
+		spawn = new Point(10, 10); // Spawning point
+		snake = new Snake(spawn);
+		panel = new Panel(snake);
 		this.add(panel);
 		this.setTitle("Snek");
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -47,23 +43,10 @@ public class Game extends JFrame {
 		while (true) {
 			try {
 				if (snakeShouldMove) {
-					switch (direction) {
-					case UP:
-						y--;
-						break;
-					case DOWN:
-						y++;
-						break;
-					case LEFT:
-						x--;
-						break;
-					case RIGHT:
-						x++;
-						break;
-					}
+					snake.move(direction);
+					repaint();
 				}
 
-				repaint();
 				TimeUnit.MILLISECONDS.sleep(FRAME_SPEED);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
