@@ -70,18 +70,26 @@ public class Game extends JFrame {
 			switch (e.getKeyCode()) {
 			case KeyEvent.VK_UP:
 				System.out.println("Pressed up");
-				direction = Direction.UP;
+				if (direction != Direction.DOWN) {
+					direction = Direction.UP;
+				}
 				break;
 			case KeyEvent.VK_DOWN:
-				direction = Direction.DOWN;
+				if (direction != Direction.UP) {
+					direction = Direction.DOWN;
+				}
 				System.out.println("Pressed down");
 				break;
 			case KeyEvent.VK_LEFT:
-				direction = Direction.LEFT;
+				if (direction != Direction.RIGHT) {
+					direction = Direction.LEFT;
+				}
 				System.out.println("Pressed left");
 				break;
 			case KeyEvent.VK_RIGHT:
-				direction = Direction.RIGHT;
+				if (direction != Direction.LEFT) {
+					direction = Direction.RIGHT;
+				}
 				System.out.println("Pressed right");
 				break;
 			}
