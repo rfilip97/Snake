@@ -14,16 +14,11 @@ public class Panel extends JPanel implements ActionListener {
 
 	private static final long serialVersionUID = 1L;
 
-	static final int WIDTH = 800;
-	static final int HEIGHT = 800;
-	static final int UNIT = HEIGHT / 100;
-	static final int NR_OF_UNITS_IN_LINE = HEIGHT / UNIT;
-
 	Snake snake;
 
 	Panel(Snake snake) {
 		this.snake = snake;
-		this.setPreferredSize(new Dimension(WIDTH, HEIGHT));
+		this.setPreferredSize(new Dimension(GameConfig.WIDTH, GameConfig.HEIGHT));
 		this.setBackground(Color.black);
 		this.setFocusable(true);
 	}
@@ -46,7 +41,7 @@ public class Panel extends JPanel implements ActionListener {
 	public void drawPart(Graphics g, int x, int y) {
 		Graphics2D graphics = (Graphics2D) g;
 		graphics.setColor(Color.GREEN);
-		graphics.setStroke(new BasicStroke(UNIT));
-		graphics.drawLine(x * UNIT, y * UNIT, x * UNIT, y * UNIT);
+		graphics.setStroke(new BasicStroke(GameConfig.UNIT));
+		graphics.drawLine(x * GameConfig.UNIT, y * GameConfig.UNIT, x * GameConfig.UNIT, y * GameConfig.UNIT);
 	}
 }
