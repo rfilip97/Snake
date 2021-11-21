@@ -47,15 +47,17 @@ public class Game extends JFrame {
 		while (true) {
 			try {
 				if (snakeShouldMove) {
-					// Move the snake
-					snake.move(direction);
-
-					// Regenerate food if snake ate it :)
+					// Snake eats the food
 					if (snake.getHead().equals(food)) {
-						System.out.println("Snake ate the food");
+						// Regenerate food if snake ate it :)
 						regenerateFood();
-					}
 
+						// Move and grow the snake
+						snake.moveAndGrow(direction);
+					} else {
+						// Simply move the snake
+						snake.move(direction);
+					}
 					// Repaint
 					repaint();
 				}
