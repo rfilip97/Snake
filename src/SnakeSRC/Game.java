@@ -10,7 +10,6 @@ public class Game extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 
-	private static int FRAME_SPEED = 500; // one frame is drawn each 'FRAME_SPEED' ms
 	boolean snakeShouldMove = true; // set this to false to stop the snake from moving, used for debugging
 	int x = 2;
 	int y = 2;
@@ -52,7 +51,7 @@ public class Game extends JFrame {
 					repaint();
 				}
 
-				TimeUnit.MILLISECONDS.sleep(FRAME_SPEED);
+				TimeUnit.MILLISECONDS.sleep(GameConfig.FRAME_SPEED);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
