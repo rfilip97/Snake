@@ -78,6 +78,7 @@ public class Game extends JFrame {
 		static final int HEIGHT = 800;
 		static final int UNIT = HEIGHT / 100;
 		static final int NR_OF_UNITS_IN_LINE = HEIGHT / UNIT;
+		Graphics graph;
 
 		Panel() {
 			this.setPreferredSize(new Dimension(WIDTH, HEIGHT));
@@ -92,11 +93,14 @@ public class Game extends JFrame {
 		@Override
 		public void paintComponent(Graphics g) {
 			super.paintComponent(g);
+			this.graph = g;
+		}
 
-			Graphics2D graphics = (Graphics2D) g;
+		public void drawPart(int x, int y) {
+			Graphics2D graphics = (Graphics2D) graph;
 			graphics.setColor(Color.GREEN);
 			graphics.setStroke(new BasicStroke(UNIT));
-			graphics.drawLine(x * UNIT, y * UNIT, (x + 1) * UNIT, y * UNIT);
+			graphics.drawLine(x * UNIT, y * UNIT, x * UNIT, y * UNIT);
 		}
 	}
 
@@ -122,8 +126,6 @@ public class Game extends JFrame {
 				System.out.println("Pressed right");
 				break;
 			}
-
 		}
 	}
-
 }
