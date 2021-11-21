@@ -32,4 +32,14 @@ public class Point {
 	int getY() {
 		return y;
 	}
+
+	public static int pointToNumber(Point point) {
+		return point.getY() * GameConfig.NR_OF_UNITS_IN_LINE + point.getX();
+	}
+
+	public static Point numberToPoint(int nr) {
+		int x = nr % GameConfig.NR_OF_UNITS_IN_LINE;
+		int y = nr / GameConfig.NR_OF_UNITS_IN_LINE;
+		return new Point(x, y);
+	}
 }
