@@ -58,7 +58,7 @@ public class Game extends JFrame {
 		}
 	}
 
-	private void generateFood() {
+	private void regenerateFood() {
 		Point foodPosition = freeSqTracker.popRandomFreeSquare();
 
 	}
