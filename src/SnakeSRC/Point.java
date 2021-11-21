@@ -11,6 +11,26 @@ public class Point {
 	}
 
 	public static Point getNextPoint(Point point, Direction direction) {
+		// Teleport UP
+		if (point.y == GameConfig.NR_OF_UNITS_IN_LINE && direction == Direction.DOWN) {
+			return new Point(point.x, 0);
+		}
+
+		// Teleport DOWN
+		if (point.y == 0 && direction == Direction.UP) {
+			return new Point(point.x, GameConfig.NR_OF_UNITS_IN_LINE);
+		}
+
+		// Teleport LEFT
+		if (point.x == GameConfig.NR_OF_UNITS_IN_LINE && direction == Direction.RIGHT) {
+			return new Point(0, point.y);
+		}
+
+		// Teleport RIGHT
+		if (point.x == 0 && direction == Direction.LEFT) {
+			return new Point(GameConfig.NR_OF_UNITS_IN_LINE, point.y);
+		}
+
 		switch (direction) {
 		case UP:
 			return new Point(point.x, point.y - 1);
