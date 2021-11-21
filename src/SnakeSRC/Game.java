@@ -54,9 +54,12 @@ public class Game extends JFrame {
 
 						// Move and grow the snake
 						snake.moveAndGrow(direction);
+						freeSqTracker.removeElement(snake.getHead());
 					} else {
 						// Simply move the snake
 						snake.move(direction);
+						freeSqTracker.removeElement(snake.getHead());
+						freeSqTracker.addElement(snake.getTail());
 					}
 					// Repaint
 					repaint();
