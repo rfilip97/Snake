@@ -47,7 +47,16 @@ public class Game extends JFrame {
 		while (true) {
 			try {
 				if (snakeShouldMove) {
+					// Move the snake
 					snake.move(direction);
+
+					// Regenerate food if snake ate it :)
+					if (snake.getHead().equals(food)) {
+						System.out.println("Snake ate the food");
+						regenerateFood();
+					}
+
+					// Repaint
 					repaint();
 				}
 
@@ -59,8 +68,8 @@ public class Game extends JFrame {
 	}
 
 	private void regenerateFood() {
-		Point foodPosition = freeSqTracker.popRandomFreeSquare();
-
+		food = freeSqTracker.popRandomFreeSquare();
+		panel.updateFood(food);
 	}
 
 	// KeyListener
