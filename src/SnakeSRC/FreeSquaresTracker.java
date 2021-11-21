@@ -11,7 +11,7 @@ public class FreeSquaresTracker {
 		array = new ArrayList<Integer>();
 
 		for (int i = 0; i < GameConfig.NR_OF_UNITS_IN_LINE; i++) {
-			for (int j = 0; j < GameConfig.NR_OF_UNITS_IN_ROW; j++) {
+			for (int j = 0; j < GameConfig.NR_OF_UNITS_IN_LINE; j++) {
 				Point point = new Point(i, j);
 				array.add(Point.pointToNumber(point));
 			}
