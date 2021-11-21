@@ -23,10 +23,12 @@ public class Game extends JFrame {
 	int x = 2;
 	int y = 2;
 	Direction direction = Direction.RIGHT;
+	Panel panel;
 
 	// Game
 	Game() {
-		this.add(new Panel());
+		panel = new Panel();
+		this.add(panel);
 		this.setTitle("Snek");
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setResizable(false);
@@ -66,41 +68,6 @@ public class Game extends JFrame {
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
-		}
-	}
-
-	// Panel
-	public class Panel extends JPanel implements ActionListener {
-
-		private static final long serialVersionUID = 1L;
-
-		static final int WIDTH = 800;
-		static final int HEIGHT = 800;
-		static final int UNIT = HEIGHT / 100;
-		static final int NR_OF_UNITS_IN_LINE = HEIGHT / UNIT;
-		Graphics graph;
-
-		Panel() {
-			this.setPreferredSize(new Dimension(WIDTH, HEIGHT));
-			this.setBackground(Color.black);
-			this.setFocusable(true);
-		}
-
-		@Override
-		public void actionPerformed(ActionEvent e) {
-		}
-
-		@Override
-		public void paintComponent(Graphics g) {
-			super.paintComponent(g);
-			this.graph = g;
-		}
-
-		public void drawPart(int x, int y) {
-			Graphics2D graphics = (Graphics2D) graph;
-			graphics.setColor(Color.GREEN);
-			graphics.setStroke(new BasicStroke(UNIT));
-			graphics.drawLine(x * UNIT, y * UNIT, x * UNIT, y * UNIT);
 		}
 	}
 
