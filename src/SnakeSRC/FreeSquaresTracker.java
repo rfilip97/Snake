@@ -53,4 +53,12 @@ public class FreeSquaresTracker {
 		System.out.println("Popping elem: " + element);
 		return element;
 	}
+
+	public Boolean isSquareFree(Point pt) {
+		if (array.contains(Point.pointToNumber(pt))) {
+			return false;
+		}
+
+		return true;
+	}
 }

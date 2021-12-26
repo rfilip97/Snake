@@ -63,6 +63,12 @@ public class Game extends JFrame {
 					}
 					// Repaint
 					repaint();
+
+					// End game if Snake ate itself
+					if (!freeSqTracker.isSquareFree(snake.getHead()) && snake.getSize() >= 2) {
+						System.out.println("GAME OVER");
+						return;
+					}
 				}
 
 				TimeUnit.MILLISECONDS.sleep(GameConfig.FRAME_SPEED);
