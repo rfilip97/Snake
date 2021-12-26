@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Random;
 
+import SnakeSRC.Logger.LogLevels;
+
 public class FreeSquaresTracker {
 	private ArrayList<Integer> array;
 
@@ -34,8 +36,9 @@ public class FreeSquaresTracker {
 	}
 
 	public void printAll() {
+		Logger logger = Logger.getInstance();
 		for (Integer item : array) {
-			System.out.println(" Item: " + item);
+			logger.log(LogLevels.INFO, " Item: " + item);
 		}
 	}
 
@@ -50,7 +53,8 @@ public class FreeSquaresTracker {
 		// Remove the element at the random index
 		array.remove(random_index);
 
-		System.out.println("Popping elem: " + element);
+		Logger logger = Logger.getInstance();
+		logger.log(LogLevels.DEBUG, "Popping elem: " + element);
 		return element;
 	}
 

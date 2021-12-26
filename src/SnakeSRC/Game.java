@@ -6,6 +6,8 @@ import java.util.concurrent.TimeUnit;
 
 import javax.swing.JFrame;
 
+import SnakeSRC.Logger.LogLevels;
+
 public class Game extends JFrame {
 
 	private static final long serialVersionUID = 1L;
@@ -37,11 +39,14 @@ public class Game extends JFrame {
 		this.setLocationRelativeTo(null);
 		this.requestFocus();
 		this.addKeyListener(new KeyListener());
-		System.out.println("GUI Constructed");
+
+		Logger logger = Logger.getInstance();
+		logger.log(LogLevels.DEBUG, "GUI Constructed");
 	}
 
 	public void Run() {
-		System.out.println("Started the game");
+		Logger logger = Logger.getInstance();
+		logger.log(LogLevels.DEBUG, "Started the game");
 
 		// Main Loop
 		while (true) {
@@ -66,7 +71,7 @@ public class Game extends JFrame {
 
 					// End game if Snake ate itself
 					if (!freeSqTracker.isSquareFree(snake.getHead()) && snake.getSize() >= 2) {
-						System.out.println("GAME OVER");
+						logger.log(LogLevels.INFO, "GAME OVER");
 						return;
 					}
 				}
@@ -87,30 +92,32 @@ public class Game extends JFrame {
 	public class KeyListener extends KeyAdapter {
 		@Override
 		public void keyPressed(KeyEvent e) {
+			Logger logger = Logger.getInstance();
+
 			switch (e.getKeyCode()) {
 			case KeyEvent.VK_UP:
-				System.out.println("Pressed up");
 				if (direction != Direction.DOWN) {
 					direction = Direction.UP;
 				}
+				logger.log(LogLevels.DEBUG, "Pressed up");
 				break;
 			case KeyEvent.VK_DOWN:
 				if (direction != Direction.UP) {
 					direction = Direction.DOWN;
 				}
-				System.out.println("Pressed down");
+				logger.log(LogLevels.DEBUG, "Pressed down");
 				break;
 			case KeyEvent.VK_LEFT:
 				if (direction != Direction.RIGHT) {
 					direction = Direction.LEFT;
 				}
-				System.out.println("Pressed left");
+				logger.log(LogLevels.DEBUG, "Pressed left");
 				break;
 			case KeyEvent.VK_RIGHT:
 				if (direction != Direction.LEFT) {
 					direction = Direction.RIGHT;
 				}
-				System.out.println("Pressed right");
+				logger.log(LogLevels.DEBUG, "Pressed right");
 				break;
 			}
 		}
