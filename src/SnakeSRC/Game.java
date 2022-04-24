@@ -52,6 +52,13 @@ public class Game extends JFrame {
 		while (true) {
 			try {
 				if (snakeShouldMove) {
+					// Game Over condition
+					if (snake.isSnakeOnPoint(Point.getNextPoint(snake.getHead(), direction)))
+					{
+						logger.log(LogLevels.INFO, "GAME OVER");
+						return;
+					}
+
 					// Snake eats the food
 					if (snake.getHead().equals(food)) {
 						// Regenerate food if snake ate it :)
@@ -68,12 +75,6 @@ public class Game extends JFrame {
 					}
 					// Repaint
 					repaint();
-
-					// End game if Snake ate itself
-					if (!freeSqTracker.isSquareFree(snake.getHead()) && snake.getSize() >= 2) {
-						logger.log(LogLevels.INFO, "GAME OVER");
-						return;
-					}
 				}
 
 				TimeUnit.MILLISECONDS.sleep(GameConfig.FRAME_SPEED);

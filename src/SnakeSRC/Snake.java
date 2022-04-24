@@ -39,4 +39,9 @@ public class Snake {
 		// Add new head
 		body.add(0, Point.getNextPoint(getHead(), direction));
 	}
+
+	public boolean isSnakeOnPoint(Point point)
+	{
+		return body.contains(point);
+	}
 }
